@@ -59,7 +59,7 @@ var tasks = config.tables.map(function (tableName) {
           var img_names = []  
           for (i = 0; i < feature.properties.img_code.length; i++) {
             base('imgs').find(feature.properties.img_code[i], function(err, rec) {
-              if (err) { console.error(err); return; }
+              if (err) { img_names.push(feature.properties.img_code[i]); return; }
               img_names.push(rec.get('Name'));
             });
           }
