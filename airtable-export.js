@@ -65,7 +65,7 @@ var tasks = config.tables.map(function (tableName) {
           }
           feature.properties.img_code = img_names;
         } else {
-          feature.properties.img_code = ["null"];
+          feature.properties.img_code = [];
         }
         var geometry = parseGeometry(get(record, 'geometry'))
         var coords = parseCoords([get(record, 'lon'), get(record, 'lat')])
