@@ -56,11 +56,12 @@ var tasks = config.tables.map(function (tableName) {
         }
         
         if (feature.properties.img_code){
-          var img_names = []  
+          var img_names = feature.properties.img_code; 
           for (i = 0; i < feature.properties.img_code.length; i++) {
             base('imgs').find(feature.properties.img_code[i], function(err, rec) {
-              if (err) { console.error(err); img_names.push(feature.properties.img_code[i]); }
+              if (err) { console.error(err); return; }
               else {
+                img_names = []
                 img_names.push(rec.get('Name'));
               }
             });
