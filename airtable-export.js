@@ -55,7 +55,7 @@ var tasks = config.tables.map(function (tableName) {
           properties: record._rawJson.fields || {}
         }
         
-        if (feature.properties.img_code !== null){
+        if (feature.properties.img_code){
           var img_names = []  
           for (i = 0; i < feature.properties.img_code.length; i++) {
             base('imgs').find(feature.properties.img_code[i], function(err, rec) {
