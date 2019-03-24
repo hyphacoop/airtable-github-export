@@ -54,6 +54,18 @@ var tasks = config.tables.map(function (tableName) {
           id: record._rawJson.id,
           properties: record._rawJson.fields || {}
         }
+        var img_names = []
+        if (feature.properties.img_code){  
+          for (i = 0; i < feature.properties.img_code.length; i++) {
+            base('imgs').find(feature.properties.img_code[i], function(err, rec) {
+              if (err) { console.error(err); return; }
+              img_names.push(rec.get('Name'));
+            });
+          }
+          feature.properties.img_code = img_names;
+        } else {
+          feature.properties.img_code = img_names;
+        }
         var geometry = parseGeometry(get(record, 'geometry'))
         var coords = parseCoords([get(record, 'lon'), get(record, 'lat')])
         if (geometry) {
