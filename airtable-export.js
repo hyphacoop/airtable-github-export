@@ -42,7 +42,7 @@ var tasks = config.tables.map(function (tableName) {
     // Ensure properties of output are set in the same order
     // otherwise they are set async and may change order, which
     // results in unhelpful diffs in Github
-    output[tableName] = null
+    output = null
 
     base(tableName).select().eachPage(page, done)
 
@@ -77,9 +77,10 @@ var tasks = config.tables.map(function (tableName) {
       if (err) return cb(err)
       var featureCollection = {
         type: 'FeatureCollection',
+        crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
         features: data
       }
-      output[tableName] = featureCollection
+      output = featureCollection
       cb()
     }
   }
