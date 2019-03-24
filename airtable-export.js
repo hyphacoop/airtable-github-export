@@ -61,7 +61,7 @@ var tasks = config.tables.map(function (tableName) {
             base('imgs').find(feature.properties.img_code[i], function(err, rec) {
               if (err) { console.error(err); return; }
               else {
-                img_names = []
+                img_names = [];
                 img_names.push(rec.get('Name'));
               }
             });
